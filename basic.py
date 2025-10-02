@@ -10,7 +10,16 @@ def resize(image, scale=0.1):
     return cv.resize(image, dimensions, interpolation=cv.INTER_AREA)
 
 cv.imshow('Cat', resize(image))
-
 gray= cv.cvtColor(resize(image), cv.COLOR_BGR2GRAY)
-cv.imshow('Gray', gray)
+# cv.imshow('Gray', gray)
+# cv.waitKey(0)
+
+#Blur an image
+blur= cv.GaussianBlur(resize(image), (5,5), cv.BORDER_DEFAULT)
+cv.imshow('Blur', blur)
+#cv.waitKey(0)
+
+#Edge Cascade
+canny= cv.Canny(resize(image), 125,175)
+cv.imshow('Canny Edges', canny)
 cv.waitKey(0)
